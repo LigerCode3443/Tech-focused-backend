@@ -1,0 +1,29 @@
+generator client {
+  provider        = "prisma-client"
+  previewFeatures = ["fullTextSearchPostgres"]
+  output          = "../src/generated/prisma"
+  moduleFormat    = "cjs"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum JobStatus {
+  QUEUED
+  PROCESSING
+  DONE
+  FAILED
+}
+
+model Job {
+  id           String    @id @default(uuid())
+  status       JobStatus @default(QUEUED)
+  progress     Int       @default(0)
+  selectedWish String    @map("selected_wish")
+  weight       Float
+  createdAt    DateTime  @default(now()) @map("created_at")
+  updatedAt    DateTime  @updatedAt @map("updated_at")
+
+  @@map("jobs")
+}

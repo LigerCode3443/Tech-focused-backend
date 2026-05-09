@@ -1,0 +1,50 @@
+# Compiled output
+/dist
+/node_modules
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Environment variables (SECURITY RISK)
+.env
+.env.local
+.env.production
+.env.development
+
+# Prisma
+/prisma/migrations
+# Не ігноруйте schema.prisma, але ігноруйте лок-файли, якщо потрібно
+/prisma/*.db
+/prisma/*.db-journal
+
+# Docker
+.docker
+/docker/data
+/postgres_data
+
+# IDEs and editors
+.idea/
+.vscode/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+
+# Testing
+/coverage
+/.nyc_output
+
+# Build files
+.npm
+.eslintcache
+/generated/prisma
+
+/generated/prisma
