@@ -22,7 +22,7 @@ const config: runtime.GetPrismaClientConfig = {
   "clientVersion": "7.8.0",
   "engineVersion": "3c6e192761c0362d496ed980de936e2f3cebcd3a",
   "activeProvider": "postgresql",
-  "inlineSchema": "generator client {\n  provider        = \"prisma-client\"\n  previewFeatures = [\"fullTextSearchPostgres\"]\n  output          = \"../src/generated/prisma\"\n  moduleFormat    = \"cjs\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n\nenum JobStatus {\n  QUEUED\n  PROCESSING\n  DONE\n  FAILED\n}\n\nmodel Job {\n  id           String    @id @default(uuid())\n  status       JobStatus @default(QUEUED)\n  progress     Int       @default(0)\n  selectedWish String    @map(\"selected_wish\")\n  weight       Float\n  createdAt    DateTime  @default(now()) @map(\"created_at\")\n  updatedAt    DateTime  @updatedAt @map(\"updated_at\")\n\n  @@map(\"jobs\")\n}\n",
+  "inlineSchema": "generator client {\n  provider        = \"prisma-client\"\n  binaryTargets   = [\"native\", \"linux-musl-openssl-3.0.x\"]\n  previewFeatures = [\"fullTextSearchPostgres\"]\n  output          = \"../src/generated/prisma\"\n  moduleFormat    = \"cjs\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n\nenum JobStatus {\n  QUEUED\n  PROCESSING\n  DONE\n  FAILED\n}\n\nmodel Job {\n  id           String    @id @default(uuid())\n  status       JobStatus @default(QUEUED)\n  progress     Int       @default(0)\n  selectedWish String    @map(\"selected_wish\")\n  weight       Float\n  createdAt    DateTime  @default(now()) @map(\"created_at\")\n  updatedAt    DateTime  @updatedAt @map(\"updated_at\")\n\n  @@map(\"jobs\")\n}\n",
   "runtimeDataModel": {
     "models": {},
     "enums": {},

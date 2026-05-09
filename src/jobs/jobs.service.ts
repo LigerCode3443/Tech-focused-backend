@@ -32,11 +32,8 @@ export class JobsService {
   private async processJobPipeline(jobId: string) {
     this.logger.log(`Starting job pipeline for job ${jobId}`);
     try {
-      // 1. Перехід у стан PROCESSING (10%)
       await this.updateAndNotify(jobId, JobStatus.PROCESSING, 10);
       this.logger.log(`Job ${jobId} progress: 10%`);
-
-      // Імітація роботи пайплайну
       await this.delay(2000);
       await this.updateAndNotify(jobId, JobStatus.PROCESSING, 50);
       this.logger.log(`Job ${jobId} progress: 50%`);
@@ -44,14 +41,11 @@ export class JobsService {
       await this.delay(2000);
       await this.updateAndNotify(jobId, JobStatus.PROCESSING, 90);
       this.logger.log(`Job ${jobId} progress: 90%`);
-
-      // 2. Завершення (DONE, 100%)
       await this.delay(1000);
       await this.updateAndNotify(jobId, JobStatus.DONE, 100);
       this.logger.log(`Job ${jobId} completed successfully`);
     } catch (error) {
       this.logger.error(`Job ${jobId} failed: ${error.message}`);
-      // 3. Обробка помилок (FAILED)
       await this.updateAndNotify(jobId, JobStatus.FAILED, 0);
     }
   }
